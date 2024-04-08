@@ -1,4 +1,5 @@
 import random
+import csv
 class WordleDL:
     def load_all_users():
         pass
@@ -10,6 +11,15 @@ class WordleDL:
     def load_scores():
         pass
 
+    def load_all_users(self):
+        ret_dict = {}
+        with open('users.csv') as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                ret_dict[row['userId']] = row['UserName']
+
+        return ret_dict
+    
     def save_new_score():
         pass
 

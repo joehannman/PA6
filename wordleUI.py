@@ -20,6 +20,12 @@ class Wordle:
         self.score = 0
         self.word_length = length
 
+    def list_all_users(self):
+        user_dict = self.logic_wrapper.get_all_users()
+        for (key, value) in user_dict.items():
+            print(f"{key}. {value}")
+
+
     def initalize_word(self):
         self.prev_words = []
         self.word = self.logic_wrapper.get_word()
@@ -63,6 +69,8 @@ class Wordle:
         clear_screen()
         header()
         print()
+        self.list_all_users()
+        user_input = input()
         self.initalize_word()
         self.guesses = 5
         

@@ -14,5 +14,8 @@ class WordleLL:
 
         return random.choice(word_list)
     
+    def get_all_users(self):
+        return self.data_wrapper.load_all_users()
+
     def write_word(self):
         pass
