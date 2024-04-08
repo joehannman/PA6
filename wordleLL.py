@@ -1,5 +1,6 @@
 from wordleDL import WordleDL
 import random
+
 class WordleLL:
     def __init__(self) -> None:
         self.data_wrapper = WordleDL()
