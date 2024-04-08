@@ -19,14 +19,10 @@ class Wordle:
         self.prev_words = []
         self.score = 0
         self.word_length = length
-
-    def list_all_users(self):
-        user_dict = self.logic_wrapper.get_all_users()
-        for (key, value) in user_dict.items():
-            print(f"{key}. {value}")
-
+        self.won = False
 
     def initalize_word(self):
+        self.won = False
         self.prev_words = []
         self.word = self.logic_wrapper.get_word()
 
@@ -42,6 +38,7 @@ class Wordle:
         clear_screen()
         header()
         print()
+        print(self.word)
 
         return self.check_guess(guess)
 
@@ -63,34 +60,22 @@ class Wordle:
 
             ret_string += "_ "
 
+        if guess == self.word: self.won = True
+            
         return ret_string + "\n"
-
-    def prompt_new_user(self):
-        new_user = input("Please enter desired username: ")
-        self.logic_wrapper.save_new_user(new_user)
-
-        self.user = new_user
-
 
     def play(self):
         clear_screen()
         header()
-        print()
-        self.list_all_users()
-        user = input("\nSelect user index or (c)reate a new user: ")
-        if user.lower() == 'c':
-            self.user = self.prompt_new_user()
-
-        clear_screen()
         self.initalize_word()
         self.guesses = 5
         
-        while self.guesses > 0:
+        while self.guesses >= 0:
             guess = self.prompt_guess()
             print(guess)
             print(f"{self.guesses} guesses left.")
             self.guesses -=  1
-            if guess.lower() == self.word:
+            if self.won:
                 print("\nYou win!")
                 self.wins += 1
                 self.streak += 1
