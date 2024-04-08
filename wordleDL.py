@@ -23,8 +23,14 @@ class WordleDL:
     def save_new_score():
         pass
 
-    def save_user():
-        pass
+    def save_user(self, userId, username):
+        with open('users.csv', 'a', newline='', encoding="utf-8") as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=['userId','UserName'])
+            
+            writer.writerow({
+                'userId': userId,
+                'UserName': username
+            })
 
     def save_new_word():
         pass

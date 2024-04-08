@@ -17,5 +17,9 @@ class WordleLL:
     def get_all_users(self):
         return self.data_wrapper.load_all_users()
 
+    def save_new_user(self, new_user):
+        userId = len(self.get_all_users()) + 1
+        self.data_wrapper.save_user(userId, new_user)
+
     def write_word(self):
         pass

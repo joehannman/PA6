@@ -64,13 +64,24 @@ class Wordle:
             ret_string += "_ "
 
         return ret_string + "\n"
-    
+
+    def prompt_new_user(self):
+        new_user = input("Please enter desired username: ")
+        self.logic_wrapper.save_new_user(new_user)
+
+        self.user = new_user
+
+
     def play(self):
         clear_screen()
         header()
         print()
         self.list_all_users()
-        user_input = input()
+        user = input("\nSelect user index or (c)reate a new user: ")
+        if user.lower() == 'c':
+            self.user = self.prompt_new_user()
+
+        clear_screen()
         self.initalize_word()
         self.guesses = 5
         
