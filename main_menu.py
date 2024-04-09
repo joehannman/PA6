@@ -15,7 +15,7 @@ class MainMenuUI:
         self.screen.clear_screen()
         print(LOGO)
         self.list_all_users()
-        print(f"\n(C)reate new user{SPACING}(Q)uit")
+        print(f"\n(C)reate new user{SPACING}(W)rite new Word{SPACING}(Q)uit")
         print()
 
     def list_all_users(self):
@@ -35,6 +35,9 @@ class MainMenuUI:
                     user = self.users[user_input]
                     play_menu = UserMenu(user, user_input) 
                     play_menu.input_prompt()
+                
+                elif user_input.lower() == "w":
+                    self.write_word()
                     
                 else:
                     self.output()
@@ -56,3 +59,13 @@ class MainMenuUI:
         self.users = self.logic_layer.get_all_users()
 
 
+    def write_word(self):
+        while True:
+            self.screen.clear_screen()
+            print(LOGO)
+            print("New word must be between 1 - 15 letters")
+            new_word = input("\n(C)ancel\nEnter desired word: ")
+            if new_word.lower() == "c": return
+            if len(new_word) > 1 and len(new_word) < 15: break
+
+        self.logic_layer.write_word(new_word)
