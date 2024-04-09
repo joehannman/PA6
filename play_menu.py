@@ -5,14 +5,16 @@ from UIutils.Ui_utils import LOGO
 from wordleUI import Wordle
 
 class PlayMenu:
-    def __init__(self, user) -> None:
+    def __init__(self, user, user_id) -> None:
         self.logic_layer = WordleLL()
         self.screen = Screen()
         self.user = user
+        self.user_id = user_id
 
     def menu_output(self) -> None:
         self.screen.clear_screen()
         print(LOGO)
+        print(f"{SPACING}··─ {self.user} ─··")
         print()
         print(f"{SPACING}(P)lay")
         print(f"{SPACING}(H)ighscore")

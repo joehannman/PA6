@@ -1,4 +1,4 @@
-from screen import Screen
+from UIutils import Screen
 import random
 
 SPACING = "\t\t"
