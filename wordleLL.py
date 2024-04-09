@@ -28,6 +28,15 @@ class WordleLL:
         
         return sorted(score_list, key=lambda item: item[1], reverse=True)
     
+    def get_scores_by_player(self, username):
+        score_list = self.data_wrapper.load_scores()
+        ret_list = []
+        for score in score_list:
+            if score[0] == username:
+                ret_list.append(score)
+        
+        return sorted(ret_list, key=lambda item: item[1], reverse=True)
+    
     def validate_guess(self, guess, word):
         try:
             int(guess)

@@ -4,7 +4,7 @@ from UIutils.Ui_utils import SPACING
 from UIutils.Ui_utils import LOGO
 
 class HighScoreMenu:
-    def __init__(self, user=0, user_id=0) -> None:
+    def __init__(self, user="gudni", user_id=0) -> None:
         self.logic_layer = WordleLL()
         self.screen = Screen()
         self.user = user
@@ -14,6 +14,8 @@ class HighScoreMenu:
         score_list = self.logic_layer.get_scores()
         player_score_list = self.logic_layer.get_scores_by_player(self.user)
         self.screen.clear_screen()
+        print(player_score_list)
+        input()
         print(LOGO)
         print(f"{SPACING}··─ {self.user} ─··")
         print()
