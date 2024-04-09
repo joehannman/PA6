@@ -5,7 +5,7 @@ class WordleLL:
     def __init__(self) -> None:
         self.data_wrapper = WordleDL()
 
-    def get_word_bank(self, length=5):
+    def get_word_bank(self):
         words = self.data_wrapper.load_all_words()
 
         return words
@@ -20,9 +20,11 @@ class WordleLL:
         userId = len(self.get_all_users()) + 1
         self.data_wrapper.save_user(userId, new_user)
 
-    def write_word(self):
-        pass
-
+    def write_word(self, word):
+        if len(word) < 3 or len(word) > 10: return
+        if word in self.get_word_bank()[len(word)]: return
+        self.data_wrapper.save_new_word(word)
+        
     def get_scores(self):
         score_list = self.data_wrapper.load_scores()
         
@@ -72,3 +74,4 @@ class WordleLL:
         
         except ValueError:
             return False
+    

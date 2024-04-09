@@ -61,5 +61,6 @@ class WordleDL:
                 'UserName': username
             })
 
-    def save_new_word():
-        pass
+    def save_new_word(word):
+        with open('word-bank.txt', 'a') as file:
+            file.write(word + "\n")
