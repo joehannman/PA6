@@ -3,6 +3,7 @@ from UIutils.Ui_utils import Screen
 from UIutils.Ui_utils import SPACING
 from UIutils.Ui_utils import LOGO
 from wordleUI import Wordle
+from high
 
 class PlayMenu:
     def __init__(self, user, user_id) -> None:
@@ -24,12 +25,22 @@ class PlayMenu:
     def input_prompt(self):
         self.menu_output()
         user_input = input(" ")
+
         if user_input.lower() == "b":
             return
+        
         if user_input.lower() == "p":
-            wordle = Wordle()
-            while True:
-                wordle.play()
-                print(f"\nWins: {wordle.wins}, Losses: {wordle.losses}\nCurrent streak: {wordle.streak}\nCurrent score: {wordle.score}\n")
-                play_again = input("Press any key to play again or (q)uit: ")
-                if play_again.lower() == "q": break
+            self.invoke_game()
+
+        if user_input.lower() == "h":
+            self.invoke_highscore()
+
+    def invoke_game(self):
+        wordle = Wordle()
+        while True:
+            wordle.play()
+            print(f"\nWins: {wordle.wins}, Losses: {wordle.losses}\nCurrent streak: {wordle.streak}\nCurrent score: {wordle.score}\n")
+            play_again = input("Press any key to play again or (q)uit: ")
+            if play_again.lower() == "q": break
+
+    def invoke_highscore():
