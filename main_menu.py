@@ -31,12 +31,11 @@ class MainMenuUI:
                 user_input = input("Select user index: ").lower()
                 if user_input.lower() == "c":
                     self.create_new_user()
-                else:
-                    # indexing into the user dictionary 
-                    if user_input in self.users:
-                        user = self.users[user_input]
-                        play_menu = PlayMenu(user, user_input) 
-                        play_menu.input_prompt()
+                if user_input in self.users:
+                    # self.invoke_play_menu()
+                    user = self.users[user_input]
+                    play_menu = PlayMenu(user, user_input) 
+                    play_menu.input_prompt()
 
     def create_new_user(self):
         self.screen.clear_screen()
