@@ -6,7 +6,7 @@ from wordleUI import Wordle
 from highscore_menu import HighScoreMenu
 
 
-class PlayMenu:
+class UserMenu:
     def __init__(self, user, user_id) -> None:
         self.logic_layer = WordleLL()
         self.screen = Screen()
@@ -18,29 +18,30 @@ class PlayMenu:
         print(LOGO)
         print(f"{SPACING}··─ {self.user} ─··")
         print()
-        print(f"{SPACING}(P)lay")
-        print(f"{SPACING}(H)ighscore")
+        print(f"{SPACING}[P]lay")
+        print(f"{SPACING}[H]ighscore")
         print()
-        print(f"{SPACING}(B)ack")
+        print(f"{SPACING}[B]ack")
 
     def input_prompt(self):
-        self.menu_output()
-        user_input = input(" ")
+        while True:
+            self.menu_output()
+            user_input = input("\nSelect option: ")
 
-        if user_input.lower() == "b":
-            return
-        
-        if user_input.lower() == "p":
-            self.invoke_game()
+            if user_input.lower() == "b":
+                return
+            
+            if user_input.lower() == "p":
+                self.invoke_game()
 
-        if user_input.lower() == "h":
-            self.invoke_highscore()
+            if user_input.lower() == "h":
+                self.invoke_highscore()
 
     def invoke_game(self):
         wordle = Wordle()
         while True:
             wordle.play()
-            print(f"\nWins: {wordle.wins}, Losses: {wordle.losses}\nCurrent streak: {wordle.streak}\nCurrent score: {wordle.score}\n")
+            # print(f"\nWins: {wordle.wins}, Losses: {wordle.losses}\nCurrent streak: {wordle.streak}\nCurrent score: {wordle.score}\n")
             play_again = input("Press any key to play again or (q)uit: ")
             if play_again.lower() == "q": 
                 if wordle.score > 0:

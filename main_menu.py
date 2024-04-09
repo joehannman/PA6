@@ -1,5 +1,5 @@
 from wordleLL import WordleLL
-from play_menu import PlayMenu
+from user_menu import UserMenu
 from UIutils.Ui_utils import Screen
 from UIutils.Ui_utils import SPACING
 from UIutils.Ui_utils import LOGO
@@ -34,7 +34,7 @@ class MainMenuUI:
                 if user_input in self.users:
                     # self.invoke_play_menu()
                     user = self.users[user_input]
-                    play_menu = PlayMenu(user, user_input) 
+                    play_menu = UserMenu(user, user_input) 
                     play_menu.input_prompt()
 
     def create_new_user(self):

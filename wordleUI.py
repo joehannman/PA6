@@ -2,6 +2,7 @@ import random
 from wordleLL import WordleLL
 from UIutils.Ui_utils import Screen
 from UIutils.Ui_utils import SPACING
+from UIutils.Ui_utils import LOGO
 
 class Wordle:
     def __init__(self, user=None) -> None:
@@ -95,8 +96,7 @@ class Wordle:
         print(self.get_stats())
 
         # Logo
-        print(f"""{SPACING}╦ ╦╔═╗╦═╗╔╦╗╦  ╔═
-{SPACING}╙╨╜╙─╜╨╙─ ╨╜╨─╜╙─""")
+        print(LOGO)
         
         # Printing each guessed word with fancy boarder
         print(f"{SPACING} ╔══───··")
@@ -118,6 +118,9 @@ class Wordle:
     def prompt_guess(self):
         self.print_guesses()
         guess = input("Make a guess: ").lower()
+        while not self.logic_layer.validate_guess(guess, self.word):
+            self.print_guesses()
+            guess = input(f"\033[31m{guess.upper()}\033[0m is not valid. \nMake a guess: ").lower()
         self.screen.clear_screen()
         print()
 
@@ -148,7 +151,7 @@ class Wordle:
 
         return guess
 
-        # return self.check_guess(guess)
+        
 
     def check_guess(self, guess):
         if self.logic_layer.validate_guess(guess, self.word):        
@@ -169,9 +172,11 @@ class Wordle:
             self.won = self.logic_layer.check_for_win(guess, self.word)
                 
             return ret_string + "\n"
+        
 
     def play(self):
         self.screen.clear_screen()
+        print(LOGO)
         user_input = int(input(f"Choose word length: "))
         self.initalize_game(user_input)
         self.guesses = 5
@@ -179,9 +184,10 @@ class Wordle:
         while self.guesses >= 0:
             guess = self.prompt_guess()
             print(guess)
-            print(f"{self.guesses} guesses left.")
             self.guesses -=  1
             if self.logic_layer.check_for_win(guess, self.word):
+                self.print_guesses()
+                # print(self.prev_words[self.cur_round-1])
                 print("\nYou win!")
                 self.wins += 1
                 self.streak += 1
@@ -189,7 +195,7 @@ class Wordle:
                 self.score += self.guesses
                 return
 
-            
+        self.print_guesses(True) 
         print("You lose")
         self.losses += 1
         self.streak = 0

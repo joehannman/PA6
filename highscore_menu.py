@@ -15,19 +15,30 @@ class HighScoreMenu:
         score_list = self.logic_layer.get_scores()
         player_score_list = self.logic_layer.get_scores_by_player(self.user)
         self.screen.clear_screen()
-        print(player_score_list)
-        input()
         print(LOGO)
         print(f"{SPACING}··─ {self.user} ─··")
         print()
         print(f"{SPACING}Hi score")
-        for i in range(len(score_list)):
-            print(f"{i+1}. {score_list[i][1]}, {score_list[i][0]}")
-        print(self.player_scores)
+        print()
+        print(f"\tPersonal Best   ║ All time Best")
+        print("\t════════════════╬════════════════════")
+        for i in range(10):
+            prt_str = ""
+            if i < len(player_score_list): prt_str += f"\t{i+1}. {player_score_list[i][1]}{SPACING}║"
+            else:
+                prt_str += f"\t{i+1}{SPACING}║"
+            if i < len(score_list): prt_str += f" {i+1}. {score_list[i][0]}: {score_list[i][1]}"
+            else:
+                prt_str += f" {i+1}"
+
+            print(prt_str)
+        print("\t════════════════╩════════════════════")
+
+        
 
     def input_prompt(self):
         self.menu_output()
-        user_input = input("")
+        user_input = input("Press [ENTER] to go back: ")
         if user_input.lower() == "b":
             return
         
