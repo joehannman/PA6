@@ -25,8 +25,8 @@ class WordleLL:
         pass
 
     def get_scores(self):
-        score_dict = self.data_wrapper.load_scores()
+        score_list = self.data_wrapper.load_scores()
         
-        return [(key, val) for (key, val) in score_dict]
+        return sorted(score_list, key=lambda item: item[1], reverse=True)
         
         

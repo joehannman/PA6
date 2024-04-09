@@ -3,7 +3,7 @@ from UIutils.Ui_utils import Screen
 from UIutils.Ui_utils import SPACING
 from UIutils.Ui_utils import LOGO
 from wordleUI import Wordle
-from high
+
 
 class PlayMenu:
     def __init__(self, user, user_id) -> None:
@@ -44,3 +44,4 @@ class PlayMenu:
             if play_again.lower() == "q": break
 
     def invoke_highscore():
+        pass

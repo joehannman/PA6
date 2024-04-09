@@ -5,14 +5,14 @@ class WordleDL:
         with open("word-bank.txt") as file:
             return [word.strip() for word in file.readlines()]
 
-    def load_scores():
-        ret_dict = {}
+    def load_scores(self):
+        ret_list = []
         with open('scores.csv') as file:
             reader = csv.DictReader(file)
             for row in reader:
-                ret_dict[row['userId']] = row['score']
+                ret_list.append((row['username'], int(row['score'])))
 
-        return ret_dict
+        return ret_list
 
     def load_all_users(self):
         ret_dict = {}
