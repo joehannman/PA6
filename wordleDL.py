@@ -44,7 +44,7 @@ class WordleDL:
         return ret_dict
     
     def store_score(self, username, score):
-        with open('score.csv', 'a', newline='', encoding="utf-8") as csvfile:
+        with open('scores.csv', 'a', newline='', encoding="utf-8") as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=['username','score'])
             
             writer.writerow({

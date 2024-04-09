@@ -177,7 +177,13 @@ class Wordle:
     def play(self):
         self.screen.clear_screen()
         print(LOGO)
-        user_input = int(input(f"Choose word length: "))
+        user_input = input(f"Choose word length: ")
+        while not self.logic_layer.validate_word_length(user_input):
+            self.screen.clear_screen()
+            print(LOGO)
+            print("Invalid length, word length must range between 3 and 10 letters")
+            user_input = input(f"Choose word length: ")
+
         self.initalize_game(user_input)
         self.guesses = 5
         

@@ -60,3 +60,15 @@ class WordleLL:
 
     def get_player_scores(self):
         return self.data_wrapper.load_player_scores()
+    
+    def validate_word_length(self, wordlength):
+        try:
+            wordlength = int(wordlength)
+
+            if wordlength < 3 or wordlength > 10:
+                return False
+            
+            return True
+        
+        except ValueError:
+            return False
