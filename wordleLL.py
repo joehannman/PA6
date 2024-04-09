@@ -5,10 +5,13 @@ class WordleLL:
     def __init__(self) -> None:
         self.data_wrapper = WordleDL()
 
-    def get_word(self, length=5):
+    def get_word_bank(self, length=5):
         words = self.data_wrapper.load_all_words()
 
-        return random.choice(words[length])
+        return words
+    
+    def get_word(self, word_bank, length):
+        return random.choice(word_bank[length])
     
     def get_all_users(self):
         return self.data_wrapper.load_all_users()
@@ -24,5 +27,23 @@ class WordleLL:
         score_list = self.data_wrapper.load_scores()
         
         return sorted(score_list, key=lambda item: item[1], reverse=True)
+    
+    def validate_guess(self, guess, word):
+        try:
+            int(guess)
+            return False
         
+        except ValueError:
+            if len(guess) != len(word):
+                return False
+            
+            return True
+
+    
+    def check_for_win(self, guess, word):
+        if guess.lower() == word.lower():
+            return True
+        
+        return False
+
     
