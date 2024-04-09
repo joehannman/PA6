@@ -2,9 +2,17 @@ import random
 import csv
 class WordleDL:
     def load_all_words(self):
+        ret_dict = {}
         with open("word-bank.txt") as file:
-            return [word.strip() for word in file.readlines()]
+            for word in file.readlines():
+                if len(word.strip()) not in ret_dict:
+                    ret_dict[len(word.strip())] = [word.strip()]
+                    continue
 
+                ret_dict[len(word.strip())].append(word.strip())
+        
+        return ret_dict
+    
     def load_scores(self):
         ret_list = []
         with open('scores.csv') as file:

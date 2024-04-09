@@ -50,7 +50,7 @@ class Wordle:
         ret_string = ""
         
         for i in range(len(guess)):
-            if self.word[i] == guess[i]:
+            if self.word[i].lower() == guess[i].lower():
                 ret_string += guess[i].upper() + " "
                 continue
 
@@ -60,7 +60,7 @@ class Wordle:
 
             ret_string += "_ "
 
-        if guess == self.word: self.won = True
+        if guess.lower() == self.word.lower(): self.won = True
             
         return ret_string + "\n"
 

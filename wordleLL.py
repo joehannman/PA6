@@ -7,12 +7,8 @@ class WordleLL:
 
     def get_word(self, length=5):
         words = self.data_wrapper.load_all_words()
-        word_list = []
-        for word in words:
-            if len(word) == length:
-                word_list.append(word)
 
-        return random.choice(word_list)
+        return random.choice(words[length])
     
     def get_all_users(self):
         return self.data_wrapper.load_all_users()
@@ -29,4 +25,4 @@ class WordleLL:
         
         return sorted(score_list, key=lambda item: item[1], reverse=True)
         
-        
+    
