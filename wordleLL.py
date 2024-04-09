@@ -46,4 +46,5 @@ class WordleLL:
         
         return False
 
-    
+    def save_score(self, user, score):
+        self.data_wrapper.store_score(user, score)

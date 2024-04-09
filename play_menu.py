@@ -41,7 +41,10 @@ class PlayMenu:
             wordle.play()
             print(f"\nWins: {wordle.wins}, Losses: {wordle.losses}\nCurrent streak: {wordle.streak}\nCurrent score: {wordle.score}\n")
             play_again = input("Press any key to play again or (q)uit: ")
-            if play_again.lower() == "q": break
+            if play_again.lower() == "q": 
+                if wordle.score > 0:
+                    self.logic_layer.save_score(self.user, wordle.score)
+                break
 
-    def invoke_highscore():
+    def invoke_highscore(self):
         pass
