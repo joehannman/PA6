@@ -12,6 +12,7 @@ class HighScoreMenu:
 
     def menu_output(self) -> None:
         score_list = self.logic_layer.get_scores()
+        player_score_list = self.logic_layer.get_scores_by_player(self.user)
         self.screen.clear_screen()
         print(LOGO)
         print(f"{SPACING}··─ {self.user} ─··")
