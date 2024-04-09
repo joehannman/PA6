@@ -23,3 +23,10 @@ class WordleLL:
 
     def write_word(self):
         pass
+
+    def get_scores(self):
+        score_dict = self.data_wrapper.load_scores()
+        
+        return [(key, val) for (key, val) in score_dict]
+        
+        
