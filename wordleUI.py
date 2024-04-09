@@ -125,20 +125,20 @@ class Wordle:
         ret_str = ""
         for i in range(len(guess)):
             if guess[i] == self.word[i]:
-                # ret_str += f"\033[32m{guess[i].upper()}\033[0m "
+                ret_str += f"\033[32m{guess[i].upper()}\033[0m "
 
                 # Coloring the keyboard letters green
                 self.a[guess[i].upper()] = f"\033[32m{guess[i].upper()}\033[0m"
 
             elif guess[i] in self.word:
-                # ret_str += f"\033[33m{guess[i].upper()}\033[0m "
+                ret_str += f"\033[33m{guess[i].upper()}\033[0m "
 
                 # Coloring a letter yellow, but not if a letter is already green
                 if self.a[guess[i].upper()] != f"\033[32m{guess[i].upper()}\033[0m":
                     self.a[guess[i].upper()] = f"\033[33m{guess[i].upper()}\033[0m"
 
             else:
-                # ret_str += f"\033[30m{guess[i].upper()}\033[0m "
+                ret_str += f"\033[30m{guess[i].upper()}\033[0m "
                 
                 # Coloring the keyboard letters black
                 self.a[guess[i].upper()] = f"\033[30m{guess[i].upper()}\033[0m"
