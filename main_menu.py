@@ -46,5 +46,3 @@ class MainMenuUI:
         self.users = self.logic_layer.get_all_users()
 
 
-mm = MainMenuUI()
-mm.input_prompt()

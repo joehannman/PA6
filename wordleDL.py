@@ -31,12 +31,12 @@ class WordleDL:
 
         return ret_dict
     
-    def save_new_score(userId, score):
-        with open('users.csv', 'a', newline='', encoding="utf-8") as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=['userId','score'])
+    def store_score(self, username, score):
+        with open('scores.csv', 'a', newline='', encoding="utf-8") as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=['username','score'])
             
             writer.writerow({
-                'userId': userId,
+                'username': username,
                 'score': score
             })
 
