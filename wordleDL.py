@@ -21,6 +21,18 @@ class WordleDL:
                 ret_list.append((row['username'], int(row['score'])))
 
         return ret_list
+    
+    def load_player_scores(self):
+        ret_dict = {}
+        with open('scores.csv') as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                if row['username'] not in ret_dict:
+                    ret_dict[row['username']] = [row['score']]
+                else:
+                    ret_dict[row['username']].append(row['score'])
+
+        return ret_dict
 
     def load_all_users(self):
         ret_dict = {}
@@ -32,7 +44,7 @@ class WordleDL:
         return ret_dict
     
     def store_score(self, username, score):
-        with open('scores.csv', 'a', newline='', encoding="utf-8") as csvfile:
+        with open('score.csv', 'a', newline='', encoding="utf-8") as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=['username','score'])
             
             writer.writerow({

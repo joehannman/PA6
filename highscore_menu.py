@@ -9,6 +9,7 @@ class HighScoreMenu:
         self.screen = Screen()
         self.user = user
         self.user_id = user_id
+        self.player_scores = self.logic_layer.get_player_scores()[self.user]
 
     def menu_output(self) -> None:
         score_list = self.logic_layer.get_scores()
@@ -19,6 +20,7 @@ class HighScoreMenu:
         print(f"{SPACING}Hi score")
         for i in range(len(score_list)):
             print(f"{i+1}. {score_list[i][1]}, {score_list[i][0]}")
+        print(self.player_scores)
 
     def input_prompt(self):
         self.menu_output()

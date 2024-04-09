@@ -3,6 +3,7 @@ from UIutils.Ui_utils import Screen
 from UIutils.Ui_utils import SPACING
 from UIutils.Ui_utils import LOGO
 from wordleUI import Wordle
+from highscore_menu import HighScoreMenu
 
 
 class PlayMenu:
@@ -47,4 +48,5 @@ class PlayMenu:
                 break
 
     def invoke_highscore(self):
-        pass
+        high_score_menu = HighScoreMenu(self.user)
+        high_score_menu.input_prompt()

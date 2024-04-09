@@ -48,3 +48,6 @@ class WordleLL:
 
     def save_score(self, user, score):
         self.data_wrapper.store_score(user, score)
+
+    def get_player_scores(self):
+        return self.data_wrapper.load_player_scores()
