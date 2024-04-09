@@ -23,8 +23,9 @@ class WordleLL:
     def write_word(self, word):
         if len(word) < 3 or len(word) > 10: return
         if word in self.get_word_bank()[len(word)]: return
-        self.data_wrapper.save_new_word(word)
         
+        self.data_wrapper.save_new_word(word)
+
     def get_scores(self):
         score_list = self.data_wrapper.load_scores()
         

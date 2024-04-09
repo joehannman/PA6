@@ -63,7 +63,7 @@ class MainMenuUI:
         while True:
             self.screen.clear_screen()
             print(LOGO)
-            print("New word must be between 1 - 15 letters")
+            print("New word must be between 3 - 10 letters")
             new_word = input("\n(C)ancel\nEnter desired word: ")
             if new_word.lower() == "c": return
             if len(new_word) > 1 and len(new_word) < 15: break

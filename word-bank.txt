@@ -174,3 +174,5 @@ Satsuma
 Persimmon
 Honeydew
 Watermelon
+Gudni
+Joehann
