@@ -25,7 +25,7 @@ class Wordle:
         self.streak = 0
         self.games_played = 0
         self.cur_round = 0
-        self.rounds = 6
+        self.rounds = 5
 
         self.screen = Screen()
 
@@ -184,8 +184,9 @@ class Wordle:
             print("Invalid length, word length must range between 3 and 10 letters")
             user_input = input(f"Choose word length: ")
 
+        self.guesses = int(user_input)
+        self.rounds = int(user_input)
         self.initalize_game(user_input)
-        self.guesses = 5
         
         while self.guesses >= 0:
             guess = self.prompt_guess()

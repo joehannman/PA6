@@ -42,7 +42,6 @@ class UserMenu:
         wordle = Wordle(self.word_bank)
         while True:
             wordle.play()
-            # print(f"\nWins: {wordle.wins}, Losses: {wordle.losses}\nCurrent streak: {wordle.streak}\nCurrent score: {wordle.score}\n")
             play_again = input("Press any key to play again or (q)uit: ")
             if play_again.lower() == "q": 
                 if wordle.score > 0:
