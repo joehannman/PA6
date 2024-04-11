@@ -7,7 +7,8 @@ from highscore_menu import HighScoreMenu
 
 
 class UserMenu:
-    def __init__(self, user, user_id) -> None:
+    def __init__(self, user, user_id, word_bank) -> None:
+        self.word_bank = word_bank
         self.logic_layer = WordleLL()
         self.screen = Screen()
         self.user = user
@@ -38,7 +39,7 @@ class UserMenu:
                 self.invoke_highscore()
 
     def invoke_game(self):
-        wordle = Wordle()
+        wordle = Wordle(self.word_bank)
         while True:
             wordle.play()
             # print(f"\nWins: {wordle.wins}, Losses: {wordle.losses}\nCurrent streak: {wordle.streak}\nCurrent score: {wordle.score}\n")

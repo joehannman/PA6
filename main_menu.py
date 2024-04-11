@@ -10,6 +10,7 @@ class MainMenuUI:
         self.logic_layer = WordleLL()
         self.screen = Screen()
         self.users = self.logic_layer.get_all_users()
+        self.word_bank = self.logic_layer.get_word_bank()
 
     def output(self) -> None:
         self.screen.clear_screen()
@@ -33,7 +34,7 @@ class MainMenuUI:
                 elif user_input in self.users:
                     # self.invoke_play_menu()
                     user = self.users[user_input]
-                    play_menu = UserMenu(user, user_input) 
+                    play_menu = UserMenu(user, user_input, self.word_bank) 
                     play_menu.input_prompt()
                 
                 elif user_input.lower() == "w":

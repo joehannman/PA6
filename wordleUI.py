@@ -5,10 +5,10 @@ from UIutils.Ui_utils import SPACING
 from UIutils.Ui_utils import LOGO
 
 class Wordle:
-    def __init__(self, user=None) -> None:
+    def __init__(self, word_bank, user=None) -> None:
         self.logic_layer = WordleLL()
         # Generate Word bank
-        self.word_bank = self.logic_layer.get_word_bank()
+        self.word_bank = word_bank
         self.word = None
 
         self.user = user
@@ -76,8 +76,8 @@ class Wordle:
         score = f"Score: {self.score}"
 
         header = f"  {wins}   {rounds}   {streak}\n"
-        header += f"╘{'═'*(len(wins)+2)}╧{'═'*(rounds_len//2)}{'─'*(rounds_len-(rounds_len//2)+2)}┴─────────····· ·  ·"
-
+        header += f"╘{'═'*(len(wins)+2)}╧{'═'*(rounds_len//2)}{'─'*(rounds_len-(rounds_len//2)+2)}┴─────────····· ·  ·\n"
+        header += f"{SPACING}Score: {self.score}"
         return header
 
     def get_keyboard(self):

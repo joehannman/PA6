@@ -9,7 +9,6 @@ class HighScoreMenu:
         self.screen = Screen()
         self.user = user
         self.user_id = user_id
-        self.player_scores = self.logic_layer.get_player_scores()[self.user]
 
     def menu_output(self) -> None:
         score_list = self.logic_layer.get_scores()

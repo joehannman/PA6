@@ -11,7 +11,7 @@ class WordleLL:
         return words
     
     def get_word(self, word_bank, length):
-        return random.choice(word_bank[length])
+        return random.choice(word_bank[int(length)])
     
     def get_all_users(self):
         return self.data_wrapper.load_all_users()
