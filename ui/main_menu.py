@@ -1,5 +1,5 @@
-from wordleLL import WordleLL
-from user_menu import UserMenu
+from logic.wordleLL import WordleLL
+from ui.user_menu import UserMenu
 from UIutils.Ui_utils import Screen
 from UIutils.Ui_utils import SPACING
 from UIutils.Ui_utils import LOGO
@@ -16,7 +16,7 @@ class MainMenuUI:
         self.screen.clear_screen()
         print(LOGO)
         self.list_all_users()
-        print(f"\n(C)reate new user{SPACING}(W)rite new Word{SPACING}(Q)uit")
+        print(f"\n[C]reate new user   [W]rite new Word   [Q]uit")
         print()
 
     def list_all_users(self):

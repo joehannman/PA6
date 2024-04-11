@@ -3,7 +3,7 @@ import csv
 class WordleDL:
     def load_all_words(self):
         ret_dict = {}
-        with open("word-bank.txt") as file:
+        with open("data/word-bank.txt") as file:
             for word in file.readlines():
                 if len(word.strip()) not in ret_dict:
                     ret_dict[len(word.strip())] = [word.strip()]
@@ -15,7 +15,7 @@ class WordleDL:
     
     def load_scores(self):
         ret_list = []
-        with open('scores.csv') as file:
+        with open('data/scores.csv') as file:
             reader = csv.DictReader(file)
             for row in reader:
                 ret_list.append((row['username'], int(row['score'])))
@@ -24,7 +24,7 @@ class WordleDL:
     
     def load_player_scores(self):
         ret_dict = {}
-        with open('scores.csv') as file:
+        with open('data/scores.csv') as file:
             reader = csv.DictReader(file)
             for row in reader:
                 if row['username'] not in ret_dict:
@@ -36,7 +36,7 @@ class WordleDL:
 
     def load_all_users(self):
         ret_dict = {}
-        with open('users.csv') as file:
+        with open('data/users.csv') as file:
             reader = csv.DictReader(file)
             for row in reader:
                 ret_dict[row['userId']] = row['UserName']
@@ -44,7 +44,7 @@ class WordleDL:
         return ret_dict
     
     def store_score(self, username, score):
-        with open('scores.csv', 'a', newline='', encoding="utf-8") as csvfile:
+        with open('data/scores.csv', 'a', newline='', encoding="utf-8") as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=['username','score'])
             
             writer.writerow({
@@ -53,7 +53,7 @@ class WordleDL:
             })
 
     def save_user(self, userId, username):
-        with open('users.csv', 'a', newline='', encoding="utf-8") as csvfile:
+        with open('data/users.csv', 'a', newline='', encoding="utf-8") as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=['userId','UserName'])
             
             writer.writerow({
@@ -62,5 +62,5 @@ class WordleDL:
             })
 
     def save_new_word(self, word):
-        with open('word-bank.txt', 'a', newline='', encoding='utf-8') as file:
+        with open('data/word-bank.txt', 'a', newline='', encoding='utf-8') as file:
             file.write(word + "\n")

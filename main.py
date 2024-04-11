@@ -1,4 +1,4 @@
-from main_menu  import MainMenuUI
+from ui.main_menu  import MainMenuUI
 
 menu = MainMenuUI()
 

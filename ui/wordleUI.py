@@ -1,5 +1,5 @@
 import random
-from wordleLL import WordleLL
+from logic.wordleLL import WordleLL
 from UIutils.Ui_utils import Screen
 from UIutils.Ui_utils import SPACING
 from UIutils.Ui_utils import LOGO
@@ -110,7 +110,6 @@ class Wordle:
     
         # Keyboard visualization
         print(self.get_keyboard())
-        print(self.word)
         print()
 
 
@@ -184,27 +183,27 @@ class Wordle:
             print("Invalid length, word length must range between 3 and 10 letters")
             user_input = input(f"Choose word length: ")
 
-        self.guesses = int(user_input)
+        self.guesses = int(user_input) -1
         self.rounds = int(user_input)
         self.initalize_game(user_input)
         
         while self.guesses >= 0:
             guess = self.prompt_guess()
-            print(guess)
             self.guesses -=  1
             if self.logic_layer.check_for_win(guess, self.word):
-                self.print_guesses()
-                # print(self.prev_words[self.cur_round-1])
-                print("\nYou win!")
                 self.wins += 1
                 self.streak += 1
                 self.games_played += 1
-                self.score += self.guesses
+                self.score += self.guesses * self.streak
+                self.print_guesses()
+                print("\nYou win!")
                 return
 
         self.print_guesses(True) 
         print("You lose")
+        self.logic_layer.save_score(self.user, self.score)
         self.losses += 1
         self.streak = 0
         self.score = 0
         self.games_played += 1
+

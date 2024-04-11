@@ -1,9 +1,9 @@
-from wordleLL import WordleLL
+from logic.wordleLL import WordleLL
 from UIutils.Ui_utils import Screen
 from UIutils.Ui_utils import SPACING
 from UIutils.Ui_utils import LOGO
-from wordleUI import Wordle
-from highscore_menu import HighScoreMenu
+from ui.wordleUI import Wordle
+from ui.highscore_menu import HighScoreMenu
 
 
 class UserMenu:

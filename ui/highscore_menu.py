@@ -1,4 +1,4 @@
-from wordleLL import WordleLL
+from logic.wordleLL import WordleLL
 from UIutils.Ui_utils import Screen
 from UIutils.Ui_utils import SPACING
 from UIutils.Ui_utils import LOGO
